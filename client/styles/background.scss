@@ -1,0 +1,16 @@
+.background {
+
+    &__gradient {
+        position: absolute;
+        left: 0;
+        top: 0;
+        display: block;
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: rgb(37,236,48);
+        background: linear-gradient(165deg, rgba(61, 242, 71, 1) 0%, rgba(3, 172, 162, 1) 100%);
+        z-index: -1;
+    }
+    
+}
