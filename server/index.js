@@ -51,6 +51,7 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 app.use(express.static('dist'))
+app.use('/model', express.static('model'))
 
 app.post('/evaluate', upload.single('photo-upload'), postEvaluation);
 

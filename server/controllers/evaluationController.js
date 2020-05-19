@@ -12,25 +12,28 @@ const evaluate = async photo => {
     ctx.drawImage(image, 0, 0, image.width, image.height, 0, 0, 150, 150);
 
     // Save file
-    const buf = canvas.getDataImage();
-    const tfimage = tf.node.decodeImage(buf);
+    const buf = canvas.toBuffer();
+    const tfimage = tf.node.decodeImage(buf, 3).reshape([1, 150, 150, 3]).div(tf.scalar(255));
 
-    const model = await tf.loadLayersModel('../jsmodel/model.json');
-    const values = await model.predict(tfimage).data();
-    const res = Array.from(values);
+    const model = await tf.loadLayersModel('http://localhost:3000/model/model.json');
+    const prediction = await model.predict(tfimage).data();
 
-    console.log(res);
+    console.log(prediction);
+
+    return prediction[0];
 
 };
 
 exports.postEvaluation = asyncWrapper(async (req, res) => {
 
-    await evaluate(req.file.buffer);
+    const prediction = await evaluate(req.file.buffer);
 
     const evaluation = {
-        classification: 'Dog',
-        score: Math.random()
+        classification: prediction >= .5 ? 'Dog' : 'Cat', 
+        score: prediction
     }
+
+    console.log(evaluation);
 
     res.status(200).json({
         status: 'success',

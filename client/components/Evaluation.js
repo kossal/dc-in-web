@@ -19,7 +19,7 @@ export default ({
         {classification}
       </Card.Title>
       <Card.Subtitle className="text-center text-info mb-4" as="h4">
-        Score: {round(score, 3)}
+        Score: {round(score, 6)}
       </Card.Subtitle>
     </Card>
   );
@@ -47,7 +47,7 @@ export default ({
         </Col>
       </Row>
 
-      {evaluation.classification && evaluation.score ? displayEvaluation(evaluation) : null}
+      {evaluation.classification !== null || evaluation.score !== null ? displayEvaluation(evaluation) : null}
     </Container>
   );
 };
