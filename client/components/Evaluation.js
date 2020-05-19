@@ -6,7 +6,7 @@ import "../styles/photo-upload.scss";
 
 export default ({
   props: {
-    photo,
+    file,
     evaluation,
     setEvaluation,
   },
@@ -40,7 +40,7 @@ export default ({
             variant="success"
             size="lg"
             block
-            onClick={() => evaluate(photo, setEvaluation)}
+            onClick={() => evaluate(file, setEvaluation)}
           >
             Evaluate
           </Button>

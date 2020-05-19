@@ -1,4 +1,4 @@
-export const handleFotoUpload = (e, setFile) => {
+export const handlePhotoPreview = (e, setFile) => {
     const file = e.target.files[0];
     const reader = new FileReader();
 

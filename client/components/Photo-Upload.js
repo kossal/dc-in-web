@@ -1,18 +1,17 @@
 import React from "react";
-import {handleFotoUpload} from "../controllers/photo";
-import { Container, Alert } from "react-bootstrap";
+import { handlePhotoPreview } from "../controllers/photo";
+import { Container } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUpload } from "@fortawesome/free-solid-svg-icons";
 import "../styles/photo-upload.scss";
 
 export default ({ props: { photo, setFile } }) => {
-
-  const displayUploadFoto = (handleFotoUpload) => (
-    <div>
+  
+  const displayUploadFoto = () => (
+    <div className="photo-upload__display-upload">
       <div>
         <FontAwesomeIcon
           className="photo-upload__icon mx-auto mb-4"
-          icon={faUpload}
+          icon="upload"
           size="4x"
         />
         <label htmlFor="foto-upload" className="btn btn-primary">
@@ -22,21 +21,23 @@ export default ({ props: { photo, setFile } }) => {
     </div>
   );
 
-  const displayFoto = photo => <img src={photo} className="photo-upload__photo" id="photo" />
-
+  const displayFoto = (photo) => <img src={photo} className="photo-upload__photo" id="photo" />;
 
   return (
     <Container className="rounded bg-white photo-upload mt-5 p-3" fluid>
       <input
-          className="photo-upload__input"
-          name="foto-upload"
-          type="file"
-          accept="image/*"
-          capture="camera"
-          id="foto-upload"
-          onChange={e => handleFotoUpload(e, setFile)}
-        />
-      {photo ? displayFoto(photo) : displayUploadFoto(handleFotoUpload)}
+        className="photo-upload__input"
+        name="foto-upload"
+        type="file"
+        accept="image/*"
+        capture="camera"
+        id="foto-upload"
+        onChange={(e) => handlePhotoPreview(e, setFile)}
+      />
+      {photo
+        ? displayFoto(photo)
+        : displayUploadFoto()}
+
     </Container>
   );
 };

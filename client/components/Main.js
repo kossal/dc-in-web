@@ -30,7 +30,7 @@ export default () => {
 
       <Photo_Upload className="my-5" props={{ photo: file.photo, setFile }} />
 
-      {file.photo ? <Evaluation props={{ evaluation, setEvaluation }}/> : null}
+      {file.photo ? <Evaluation props={{ file: file.file, evaluation, setEvaluation }}/> : null}
 
     </Container>
   );
