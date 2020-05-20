@@ -8,7 +8,8 @@
     "start-watch": "nodemon server/index.js",
     "dev": "concurrently --kill-others \"npm run start-watch\" \"npm run build-watch\"",
     "build": "parcel build ./client/index.html",
-    "start": "npm run build && node server/index.js"
+    "start": "npm run build && node server/index.js",
+    "keras-to-ts": "tensorflowjs_converter --input_format keras model.h5 model.json"
   },
   "keywords": [
     "tensorflow",
@@ -36,7 +37,8 @@
     "popper.js": "^1.16.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "uuid": "^8.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",
@@ -54,7 +56,6 @@
     "eslint-plugin-prettier": "^3.1.3",
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.2",
-    "nodemon": "^2.0.4",
     "parcel-bundler": "^1.12.4",
     "prettier": "^2.0.5",
     "sass": "^1.26.5"

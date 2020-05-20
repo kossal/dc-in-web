@@ -43,10 +43,19 @@ CMD [ "npm", "start" ]
 COPY . .
 ```
 
+## Build image
+
+```sh
+sudo docker build -t hello-world .
+```
+
 Start a container exposing ports with:
 
 ```docker
 docker run --rm --publish 8000:8080 --detach --name bb bulletinboard:1.0
+docker run --rm --publish 8000:8080 --detach --restart unless-stopped --name bb bulletinboard:1.0
+docker run --publish 3000:3000 --restart unless-stopped --name dogs-cats-app kossal/dc-in-web:0.1.0
+docker run --publish 80:3000 --detach --restart unless-stopped --name dogs-cats-app kossal/dc-in-web:0.1.0
 ```
 > rm: docker will erase all trace of the container once exited
 > publish: forward traffic from port 8000 to port 8080 of container

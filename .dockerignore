@@ -1,0 +1,10 @@
+.git
+Dockerfile
+.DS_Store
+.gitignore
+README.md
+.cache
+server/temp/**/*
+server/temp
+node_modules
+test.js
